@@ -1,28 +1,85 @@
-import { SafeAreaView, ScrollView, StyleSheet,Image, Text, TouchableOpacity, View } from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Image,
+  Text,
+  TouchableOpacity,
+  View,
+  TextInput,
+} from "react-native";
+import { Ionicons, AntDesign, MaterialIcons } from "@expo/vector-icons";
 
 export default function App() {
   return (
-    <SafeAreaView style={{backgroundColor:"#F7F0E8", padding:30, flex:1 }}>
-    <ScrollView style={{marginTop:15}}>
-    
-      <View style={{gap: 20}}>
-      {/**Header */}
-      <View style={{display:"flex", flexDirection:"row", justifyContent:"space-between", alignItems:"center"}}>
-       <View>
-        <Text style={{fontWeight:700, fontSize:32}}>Hello, Dev</Text>
-        <Text style={{fontSize:12}}>14 tasks devs</Text>
-       </View>
+    <SafeAreaView style={{ backgroundColor: "#F7F0E8", padding: 30, flex: 1 }}>
+      <ScrollView style={{ marginTop: 15 }}>
+        <View style={{ gap: 20 }}>
+          {/**Header */}
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <View>
+              <Text style={{ fontWeight: 700, fontSize: 32 }}>Hello, Dev</Text>
+              <Text style={{ fontSize: 12 }}>14 tasks devs</Text>
+            </View>
 
-       <TouchableOpacity style={{backgroundColor:"white", borderRadius:50, padding:5}}>
-       <Image source={require("./assets/person.png")} />
-       </TouchableOpacity>
-      </View>
+            <TouchableOpacity
+              style={{ backgroundColor: "white", borderRadius: 50, padding: 5 }}
+            >
+              <Image source={require("./assets/person.png")} />
+            </TouchableOpacity>
+          </View>
 
-      
+          {/**Search Bar */}
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent:"space-between"
+            }}
+          >
+            <View
+              style={{
+                backgroundColor: "white",
+                padding: 10,
+                borderRadius: 50,
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                gap: 7,
+              }}
+            >
+              <AntDesign name="search1" size={24} color="black" />
+              <TextInput
+                placeholder="Search"
+                placeholderTextColor="black"
+                style={{
+                  fontSize: 16,
+                  fontWeight: "400",
+                  width: "70%",
+                  height: 30,
+                }}
+              />
+            </View>
 
-
-      
-      </View>
+            <TouchableOpacity
+              style={{
+                backgroundColor: "#F0522F",
+                padding: 7,
+                borderRadius: 10,
+              }}
+            >
+              <Image source={require("./assets/Vector.png")} />
+            </TouchableOpacity>
+          </View>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
