@@ -7,8 +7,10 @@ import {
   TouchableOpacity,
   View,
   TextInput,
+  FlatList,
 } from "react-native";
 import { Ionicons, AntDesign, MaterialIcons } from "@expo/vector-icons";
+import { categoryData } from "./mockData/categoryData";
 
 export default function App() {
   return (
@@ -42,7 +44,7 @@ export default function App() {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              justifyContent:"space-between"
+              justifyContent: "space-between",
             }}
           >
             <View
@@ -78,6 +80,43 @@ export default function App() {
             >
               <Image source={require("./assets/Vector.png")} />
             </TouchableOpacity>
+          </View>
+
+          {/**Categories */}
+          <View style={{ gap: 10 }}>
+            <Text style={{ fontWeight: "700", fontSize: 20 }}>Categories</Text>
+
+            <FlatList
+              data={categoryData}
+              keyExtractor={(item) => item.id}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              renderItem={({ item }) => (
+                <View
+                  style={{
+                    gap: 10,
+                    backgroundColor: "white",
+                    marginRight: 5,
+                    padding: 10,
+                    borderRadius: 20,
+                  }}
+                >
+                  <View>
+                    <Text
+                      style={{
+                        fontSize: 18,
+                        fontWeight: "700",
+                        marginBottom: 1,
+                      }}
+                    >
+                      {item.name}
+                    </Text>
+                    <Text>{item.description}</Text>
+                  </View>
+                  <Image source={item.image} />
+                </View>
+              )}
+            />
           </View>
         </View>
       </ScrollView>
