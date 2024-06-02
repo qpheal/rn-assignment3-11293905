@@ -1,7 +1,6 @@
 import {
   SafeAreaView,
   ScrollView,
-  StyleSheet,
   Image,
   Text,
   TouchableOpacity,
@@ -9,13 +8,20 @@ import {
   TextInput,
   FlatList,
 } from "react-native";
-import { Ionicons, AntDesign, MaterialIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import { categoryData } from "./mockData/categoryData";
+import { taskData } from "./mockData/taskData";
 
 export default function App() {
   return (
     <SafeAreaView style={{ backgroundColor: "#F7F0E8", padding: 30, flex: 1 }}>
-      <ScrollView style={{ marginTop: 15 }}>
+      <ScrollView
+        style={{ marginTop: 15 }}
+        contentContainerStyle={{ flexGrow: 1 }}
+        keyboardDismissMode="on-drag"
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+      >
         <View style={{ gap: 20 }}>
           {/**Header */}
           <View
@@ -118,17 +124,41 @@ export default function App() {
               )}
             />
           </View>
+
+          {/**Ongoing  Tasks*/}
+          <View style={{ gap: 15 }}>
+            <Text style={{ fontWeight: "700", fontSize: 20 }}>
+              Ongoing Tasks
+            </Text>
+
+            <FlatList
+              data={taskData}
+              keyExtractor={(item) => item.id}
+              renderItem={({ item }) => (
+                <View
+                  style={{
+                    gap: 10,
+                    backgroundColor: "white",
+                    borderWidth: 1,
+                    borderStyle: "solid",
+                    borderColor: "#E8D1BA",
+                    padding: 25,
+                    borderRadius: 20,
+                    marginBottom: 6,
+                    justifyContent: "center",
+                  }}
+                >
+                  <View>
+                    <Text style={{ fontSize: 18, fontWeight: "400" }}>
+                      {item.name}
+                    </Text>
+                  </View>
+                </View>
+              )}
+            />
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 }
-
-/*const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});*/
