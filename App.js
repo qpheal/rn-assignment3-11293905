@@ -119,7 +119,19 @@ export default function App() {
                     </Text>
                     <Text>{item.description}</Text>
                   </View>
-                  <Image source={item.image} />
+                  <View
+                    style={{
+                      width: 120,
+                      height: 120,
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Image
+                      style={{ flex: 1, width: "100%", height: "100%" }}
+                      source={item.image}
+                    />
+                  </View>
                 </View>
               )}
             />
